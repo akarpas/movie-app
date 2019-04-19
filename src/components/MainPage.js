@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import MovieList from './MovieList';
+import debounce from 'lodash.debounce';
 
 import style from './MainPage.scss';
 
 const MainPage = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleChange = event => setInputValue(event.target.value);
+  const handleChange = debounce((value) => {
+    setSearchTerm(value)
+  }, 1000);
+
 
   return (
     <React.Fragment>
@@ -13,14 +18,13 @@ const MainPage = () => {
         <h3>Movie Spy</h3>
         <input
           className={style.search}
-          onChange={handleChange}
-          value={inputValue}
+          onChange={event => handleChange(event.target.value)}
           type="input"
           id="search"
           placeholder="search"
         />
       </header>
-      <div style={{ color: 'white' }}>{inputValue}</div>
+      <MovieList searchTerm={searchTerm} />
     </React.Fragment>
   )
 }
