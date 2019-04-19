@@ -10,6 +10,7 @@ const MainPage = () => {
   return (
     <React.Fragment>
       <header className={style.appHeader}>
+        <h3>Movie Spy</h3>
         <input
           className={style.search}
           onChange={handleChange}
