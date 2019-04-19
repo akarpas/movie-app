@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MovieList from './MovieList';
 
 import style from './MainPage.scss';
 
@@ -20,6 +21,7 @@ const MainPage = () => {
           placeholder="search"
         />
       </header>
+      <MovieList searchTerm={inputValue} />
       <div style={{ color: 'white' }}>{inputValue}</div>
     </React.Fragment>
   )
