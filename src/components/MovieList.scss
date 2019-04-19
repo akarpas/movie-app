@@ -30,6 +30,7 @@
 }
 
 .poster:hover {
-  height: calc(30vh + 5px);
+  height: calc(30vh - 23px);
+  padding: 10px;
   border: 1px solid white;
 }
