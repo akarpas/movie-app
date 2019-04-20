@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import MovieList from './MovieList';
 import MoviePage from './MoviePage';
+import MovieSimilar from './MovieSimilar';
 
 import style from './MainPage.scss';
 
@@ -28,6 +29,7 @@ const MainPage = () => {
       <MovieList searchTerm={searchTerm} />
       <Switch>
         <Route path="/movie/:id" component={MoviePage} />
+        <Route path="/similar/:id" component={MovieSimilar} />
       </Switch>
     </React.Fragment>
   );
