@@ -33,7 +33,7 @@ const MovieSimilar = props => {
   return (
     <div className={style.container}>
       <div>Movies Similar to:</div>
-      <h2>{referencedMovieTitle}</h2>
+      <h2 className={style.title}>{referencedMovieTitle}</h2>
       <div className={style.movies}>
         {similarMovies && similarMovies.map(movie => (
           <Link to={{ pathname: `/movie/${movie.id}` }} key={`${movie.title}Link`}>
