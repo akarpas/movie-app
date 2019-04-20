@@ -39,9 +39,9 @@ const MoviePage = props => {
         <Link className={style.link} to={{ pathname: `/similar/${id}` }}>
           View Similar Movies
         </Link>
-        <br />
+        <br /><br />
         <Link className={style.link} to={{ pathname: '/' }}>
-          Go Back
+          Close
         </Link>
       </div>
     </div>
