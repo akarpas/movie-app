@@ -46,6 +46,13 @@ const MovieSimilar = props => {
           </Link>
         ))}
       </div>
+      <button
+        type="button"
+        className={style.button}
+        onClick={props.history.goBack} // eslint-disable-line
+      >
+        Go Back
+      </button>
     </div>
   );
 };

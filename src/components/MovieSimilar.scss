@@ -35,3 +35,25 @@
   padding: 10px;
   border: 1px solid white;
 }
+
+.link {
+  margin-top: 2rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.button {
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border-style: none;
+  margin-top: 2rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
