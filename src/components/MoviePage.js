@@ -36,6 +36,10 @@ const MoviePage = props => {
         <p>{movie.overview}</p>
         <strong>Release Date: </strong>{movie.release_date}
         <br /><br />
+        <Link className={style.link} to={{ pathname: `/similar/${id}` }}>
+          View Similar Movies
+        </Link>
+        <br />
         <Link className={style.link} to={{ pathname: '/' }}>
           Go Back
         </Link>
