@@ -21,6 +21,8 @@ const MoviePage = props => {
     fetchData();
   }, [pathname]);
 
+  const goBack = () => props.history.goBack(); // eslint-disable-line
+
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
   return movie ? (
@@ -39,10 +41,10 @@ const MoviePage = props => {
         <Link className={style.link} to={{ pathname: `/similar/${id}` }}>
           View Similar Movies
         </Link>
-        <br /><br />
-        <Link className={style.link} to={{ pathname: '/' }}>
-          Close
-        </Link>
+        <br />
+        <button type="button" className={style.button} onClick={goBack}>
+          Go Back
+        </button>
       </div>
     </div>
   ): (<div>Loading...</div>);
