@@ -1,0 +1,14 @@
+.container {
+  overflow-y: scroll;
+  height: 100vw;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.98);
+  color: white;
+}
