@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import style from './MovieSimilar.scss';
 
@@ -35,12 +36,14 @@ const MovieSimilar = props => {
       <h2>{referencedMovieTitle}</h2>
       <div className={style.movies}>
         {similarMovies && similarMovies.map(movie => (
-          <img
-            key={movie.title}
-            className={style.movieThumb}
-            src={`${IMAGE_BASE_URL}${movie.poster_path}`}
-            alt={movie.title}
-          />
+          <Link to={{ pathname: `/movie/${movie.id}` }} key={`${movie.title}Link`}>
+            <img
+              key={movie.title}
+              className={style.movieThumb}
+              src={`${IMAGE_BASE_URL}${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </Link>
         ))}
       </div>
     </div>
