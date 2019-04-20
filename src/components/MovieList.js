@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import style from './MovieList.scss';
 
@@ -50,7 +49,7 @@ const MovieList = props => {
           const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
           return (
             <div className={style.movieThumb} key={`${id}-thumb`}>
-              <Link to={`/${id}`}>
+              <Link to={{ pathname: `/movie/${id}` }}>
                 <img
                   key={id}
                   className={style.poster}
