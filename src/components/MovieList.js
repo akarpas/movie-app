@@ -48,16 +48,14 @@ const MovieList = props => {
           const { id, title, poster_path } = movie; // eslint-disable-line
           const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
           return (
-            <div className={style.movieThumb} key={`${id}-thumb`}>
-              <Link to={{ pathname: `/movie/${id}` }}>
-                <img
-                  key={id}
-                  className={style.poster}
-                  src={`${imageBaseUrl}${poster_path}`} // eslint-disable-line
-                  alt={title}
-                />
-              </Link>
-            </div>
+            <Link to={{ pathname: `/movie/${id}` }}>
+              <img
+                key={id}
+                className={style.movieThumb}
+                src={`${imageBaseUrl}${poster_path}`} // eslint-disable-line
+                alt={title}
+              />
+            </Link>
           );
         })}
       </div>

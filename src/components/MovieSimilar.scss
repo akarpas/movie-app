@@ -1,0 +1,37 @@
+.container {
+  overflow-y: scroll;
+  min-height: 100vw;
+  width: calc(100vw - 6rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 3rem 3rem 0 3rem;
+  background-color: rgba(0,0,0,0.98);
+  color: white;
+}
+
+.movies {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.movieThumb {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 120px;
+}
+
+.movieThumb:hover {
+  width: 108px;
+  padding: 10px;
+  border: 1px solid white;
+}
