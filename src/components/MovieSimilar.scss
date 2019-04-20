@@ -1,6 +1,6 @@
 .container {
   overflow-y: scroll;
-  min-height: 100vw;
+  height: 100vh;
   width: calc(100vw - 6rem);
   position: fixed;
   top: 0;
@@ -11,6 +11,10 @@
   padding: 3rem 3rem 0 3rem;
   background-color: rgba(0,0,0,0.98);
   color: white;
+}
+
+.title {
+  text-align: center;
 }
 
 .movies {
