@@ -1,10 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_KEY, IMAGE_BASE_URL, API_BASE_URL } from '../data';
 
 import style from './MovieSimilar.scss';
-
-const API_KEY = '6e13b454073848d7b6853f415e2636be';
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 const MovieSimilar = props => {
   const { location } = props; // eslint-disable-line
@@ -15,12 +13,14 @@ const MovieSimilar = props => {
 
   useLayoutEffect(() => {
     async function fetchData() {
-      const urlSimilarMovies = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US`;
+      // TO DO: Set API Utility File to make calls to API
+      const urlSimilarMovies = `${API_BASE_URL}movie/${id}/similar?api_key=${API_KEY}&language=en-US`;
       const responseSimilarMovies = await fetch(urlSimilarMovies);
       const dataSimilarMovies = await responseSimilarMovies.json();
       const { results } = dataSimilarMovies;
 
-      const urlReferencedMovie = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+      // TO DO: Set API Utility File to make calls to API
+      const urlReferencedMovie = `${API_BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
       const responseReferencedMovie = await fetch(urlReferencedMovie);
       const dataReferencedMovie = await responseReferencedMovie.json();
 

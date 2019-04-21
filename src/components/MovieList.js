@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { API_KEY, API_BASE_URL } from '../data';
 
 import style from './MovieList.scss';
-
-const API_KEY = '6e13b454073848d7b6853f415e2636be';
 
 const MovieList = props => {
   const { searchTerm } = props;
@@ -13,7 +12,8 @@ const MovieList = props => {
   const [searchMovies, setSearchMovies] = useState(null);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`;
+    // TO DO: Set API Utility File to make calls to API
+    const url = `${API_BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -25,7 +25,8 @@ const MovieList = props => {
   useEffect(() => {
     if (searchTerm.length > 0) {
       setIsSearch(true);
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
+      // TO DO: Set API Utility File to make calls to API
+      const url = `${API_BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
       fetch(url)
         .then(response => response.json())
         .then(data => {
