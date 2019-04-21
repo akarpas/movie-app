@@ -16,7 +16,7 @@ const MainPage = () => {
 
   return (
     <React.Fragment>
-      <header className={style.appHeader}>
+      <header className={style.header}>
         <h3>Movie Spy</h3>
         <input
           className={style.search}
