@@ -47,7 +47,7 @@ const MoviePage = props => {
         </button>
       </div>
     </div>
-  ): (<div>Loading...</div>);
+  ): (<div className={style.loading}>Loading...</div>);
 };
 
 export default MoviePage;
