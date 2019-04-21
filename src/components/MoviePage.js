@@ -1,9 +1,8 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_KEY, IMAGE_BASE_URL, API_BASE_URL } from '../data';
 
 import style from './MoviePage.scss';
-
-const API_KEY = '6e13b454073848d7b6853f415e2636be';
 
 const MoviePage = props => {
   const { location } = props; // eslint-disable-line
@@ -12,7 +11,8 @@ const MoviePage = props => {
   const [movie, setMovie] = useState(null);
   useLayoutEffect(() => {
     async function fetchData() {
-      const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+      // TO DO: Set API Utility File to make calls to API
+      const url = `${API_BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
       const response = await fetch(url);
       const data = await response.json();
       const { poster_path, genres, title, overview, release_date, tagline } = data; // eslint-disable-line
@@ -23,11 +23,9 @@ const MoviePage = props => {
 
   const goBack = () => props.history.goBack(); // eslint-disable-line
 
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-
   return movie ? (
     <div className={style.container}>
-      <img className={style.poster} src={`${imageBaseUrl}${movie.poster_path}`} alt={movie.title} />
+      <img className={style.poster} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} />
       <div className={style.details}>
         <h1>{movie.title}</h1>
         <strong>Genres:</strong> {movie.genres.map((genre, index) => {
@@ -47,7 +45,7 @@ const MoviePage = props => {
         </button>
       </div>
     </div>
-  ): (<div>Loading...</div>);
+  ): (<div className={style.loading}>Loading...</div>);
 };
 
 export default MoviePage;

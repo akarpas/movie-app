@@ -8,6 +8,14 @@
   padding: 1rem 0;
 }
 
+.movies {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .movieThumb {
   display: flex;
   flex-flow: column;
@@ -16,18 +24,6 @@
   padding: 5px;
   width: 200px;
   margin: 2.5px;
-}
-
-.poster {
-  width: 200px;
-}
-
-.movies {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
 }
 
 .movieThumb:hover {
