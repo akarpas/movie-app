@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { API_KEY, API_BASE_URL } from '../data';
 
 import style from './MovieList.scss';
 
 const MovieList = props => {
-  const { searchTerm } = props;
+  const { searchTerm } = props; // eslint-disable-line
   const [isSearch, setIsSearch] = useState(false);
   const [popularMovies, setPopularMovies] = useState(null);
   const [searchMovies, setSearchMovies] = useState(null);
@@ -62,10 +61,6 @@ const MovieList = props => {
       </div>
     </div>
   );
-};
-
-MovieList.propTypes = {
-  searchTerm: PropTypes.string // eslint-disable-line
 };
 
 export default MovieList;
