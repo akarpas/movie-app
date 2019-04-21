@@ -1,7 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import MoviePage from './MoviePage';
 
 import style from './App.scss';
 
