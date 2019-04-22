@@ -22,8 +22,9 @@ export default (type, parameter) => {
   case 'popular':
     url = `${API_BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`;
     return makeCall(url, type);
-  // case 'similar':
-  //   return;
+  case 'similar':
+    url = `${API_BASE_URL}movie/${parameter}/similar?api_key=${API_KEY}&language=en-US`;
+    return makeCall(url, type);
   case 'movie':
     url = `${API_BASE_URL}movie/${parameter}?api_key=${API_KEY}&language=en-US`;
     return makeCall(url, type);
