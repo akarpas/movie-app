@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { API_KEY, API_BASE_URL } from '../data';
+import callApi from '../utils/movie-api';
 
 import style from './MovieList.scss';
 
@@ -11,27 +11,17 @@ const MovieList = props => {
   const [searchMovies, setSearchMovies] = useState(null);
 
   useEffect(() => {
-    // TO DO: Set API Utility File to make calls to API
-    const url = `${API_BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data;
-        setPopularMovies(results);
-      });
+    callApi('popular').then(results => {
+      setPopularMovies(results);
+    });
   }, []);
 
   useEffect(() => {
     if (searchTerm.length > 0) {
       setIsSearch(true);
-      // TO DO: Set API Utility File to make calls to API
-      const url = `${API_BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const { results } = data;
-          setSearchMovies(results);
-        });
+      callApi('search', searchTerm).then(results => {
+        setSearchMovies(results);
+      });
     } else {
       setSearchMovies(null);
       setIsSearch(false);

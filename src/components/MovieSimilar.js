@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_KEY, IMAGE_BASE_URL, API_BASE_URL } from '../data';
+import { IMAGE_BASE_URL } from '../data';
+import callApi from '../utils/movie-api';
 
 import style from './MovieSimilar.scss';
 
@@ -13,19 +14,13 @@ const MovieSimilar = props => {
 
   useLayoutEffect(() => {
     async function fetchData() {
-      // TO DO: Set API Utility File to make calls to API
-      const urlSimilarMovies = `${API_BASE_URL}movie/${id}/similar?api_key=${API_KEY}&language=en-US`;
-      const responseSimilarMovies = await fetch(urlSimilarMovies);
-      const dataSimilarMovies = await responseSimilarMovies.json();
-      const { results } = dataSimilarMovies;
+      callApi('similar', id).then(results => {
+        setSimilarMovies(results);
+      });
 
-      // TO DO: Set API Utility File to make calls to API
-      const urlReferencedMovie = `${API_BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
-      const responseReferencedMovie = await fetch(urlReferencedMovie);
-      const dataReferencedMovie = await responseReferencedMovie.json();
-
-      setSimilarMovies(results);
-      setReferencedMovieTitle(dataReferencedMovie.title);
+      callApi('movie', id).then(movie => {
+        setReferencedMovieTitle(movie.title);
+      });
     }
     fetchData();
   }, [pathname]);
