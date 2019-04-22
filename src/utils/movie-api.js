@@ -4,12 +4,12 @@ const makeCall = (url, type) => {
   return fetch(url)
     .then(response => response.json())
     .then(data => {
-      if (type !== 'movie') {
-        const { results } = data;
-        return results;
+      if (type === 'movie') {
+        const { poster_path, genres, title, overview, release_date, tagline } = data; // eslint-disable-line
+        return { poster_path, genres, title, overview, release_date, tagline };
       }
-      const { poster_path, genres, title, overview, release_date, tagline } = data; // eslint-disable-line
-      return { poster_path, genres, title, overview, release_date, tagline };
+      const { results } = data;
+      return results;
     });
 };
 
