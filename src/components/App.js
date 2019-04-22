@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import debounce from 'lodash.debounce';
+import { AnimatedSwitch } from 'react-router-transition';
 import MovieList from './MovieList';
 import MoviePage from './MoviePage';
 import MovieSimilar from './MovieSimilar';
@@ -28,8 +29,15 @@ const App = () => {
       </header>
       <MovieList searchTerm={searchTerm} />
       <Switch>
-        <Route path="/movie/:id" component={MoviePage} />
-        <Route path="/similar/:id" component={MovieSimilar} />
+        <AnimatedSwitch
+          atEnter={{ opacity: 0.25 }}
+          atLeave={{ opacity: 0.25 }}
+          atActive={{ opacity: 1 }}
+          className="switch-wrapper"
+        >
+          <Route path="/movie/:id" component={MoviePage} />
+          <Route path="/similar/:id" component={MovieSimilar} />
+        </AnimatedSwitch>
       </Switch>
     </div>
   );
