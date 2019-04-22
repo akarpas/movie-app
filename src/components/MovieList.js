@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import callApi from '../utils/movie-api';
-import { API_KEY, API_BASE_URL } from '../data';
 
 import style from './MovieList.scss';
 
@@ -11,20 +10,10 @@ const MovieList = props => {
   const [popularMovies, setPopularMovies] = useState(null);
   const [searchMovies, setSearchMovies] = useState(null);
 
-  const makeCall = async (type, parameter) => {
-    const results = callApi(type, parameter);
-    return results;
-  }
-
   useEffect(() => {
-    // TO DO: Set API Utility File to make calls to API
-    const url = `${API_BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${1}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const { results } = data;
-        setPopularMovies(results);
-      });
+    callApi('popular').then(results => {
+      setPopularMovies(results);
+    });
   }, []);
 
   useEffect(() => {
