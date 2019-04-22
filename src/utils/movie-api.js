@@ -11,6 +11,7 @@ const makeCall = (url, type) => {
       const { results } = data;
       return results;
     });
+  // TO DO: Add error handling
 };
 
 export default (type, parameter) => {
@@ -26,7 +27,7 @@ export default (type, parameter) => {
     url = `${API_BASE_URL}movie/${parameter}/similar?api_key=${API_KEY}&language=en-US`;
     return makeCall(url, type);
   case 'movie':
-    url = `${API_BASE_URL}movie/${parameter}?api_key=${API_KEY}&language=en-US`;
+    url = `${API_BASE_URL}movie/${'asdasdasd'}?api_key=${API_KEY}&language=en-US`;
     return makeCall(url, type);
   default:
     throw new Error('API Call type does not exist: ', type);
