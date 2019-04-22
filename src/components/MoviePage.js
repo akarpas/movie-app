@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { API_KEY, IMAGE_BASE_URL, API_BASE_URL } from '../data';
+import { IMAGE_BASE_URL } from '../data';
+import callApi from '../utils/movie-api';
 
 import style from './MoviePage.scss';
 
@@ -9,16 +10,11 @@ const MoviePage = props => {
   const { pathname } = location;
   const id = pathname.split('/')[2];
   const [movie, setMovie] = useState(null);
+
   useLayoutEffect(() => {
-    async function fetchData() {
-      // TO DO: Set API Utility File to make calls to API
-      const url = `${API_BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const { poster_path, genres, title, overview, release_date, tagline } = data; // eslint-disable-line
-      setMovie({poster_path, genres, title, overview, release_date, tagline});
-    }
-    fetchData();
+    callApi('movie', id).then(results => {
+      setMovie(results);
+    });
   }, [pathname]);
 
   const goBack = () => props.history.goBack(); // eslint-disable-line
