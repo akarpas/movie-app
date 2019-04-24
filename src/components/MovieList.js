@@ -29,12 +29,14 @@ const MovieList = props => {
   }, [searchTerm]);
 
   const movies = searchMovies || popularMovies;
+  const hasResults = !searchMovies || searchMovies.length > 0;
 
   return (
     <div className={style.container}>
       <h3>{isSearch ? 'Search Results' : 'Popular Movies'}</h3>
+      <div>{isSearch && !hasResults && 'No Results'}</div>
       <div className={style.movies}>
-        {movies && movies.filter(movie => movie.poster_path).map(movie => {
+        {movies ? movies.filter(movie => movie.poster_path).map(movie => {
           const { id, title, poster_path } = movie; // eslint-disable-line
           const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
           return (
@@ -47,7 +49,7 @@ const MovieList = props => {
               />
             </Link>
           );
-        })}
+        }) : <div>Loading...</div> }
       </div>
     </div>
   );
